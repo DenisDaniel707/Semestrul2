@@ -1,0 +1,188 @@
+prezentarea 2 - am
+5)
+
+x.x = 1
+x.y = 2
+
+x.x = 3
+x.y = 4
+
+x.x = y.x = 1
+x.y = 4
+y.y = 2
+
+a.x = b.x = x.x = y.x = 5
+a.y = x.y = 4
+b.y = y.y = 6
+
+a.x = b.x = x.x = y.x = 1
+a.y = x.y = 4
+y.y = 6
+b.y = 2
+
+v. statica e aceeasi pt toate obiectele
+
+6) a) x=2 explic pasii
+
+b) runtime exception este singurul tip exceptie care nu are nevoie de throws.
+
+
+subiect colega
+
+5. a) x.a= y.a= 10
+x.b= 9
+y.b=11
+
+raspuns final: 10
+
+b)  z.a= t.a= x.a= y.a= 12
+z.b = x.b= 9
+t.b = y.b=13
+
+z.a= t.a= x.a= y.a= 0
+x.b= 9
+t.b= y.b=13
+z.b= 0
+/*
+AClass m = t;
+m.put(7, 8) */
+
+raspus: 9
+
+c) raspuns: 13
+
+6. a) putem, pentru ca parametrii
+
+b) eroare, deoarece nu am creat un obiect ( = new Double[]())
+
+c) adevarat. O metoda statica se poate apela oricand, nu avem nevoie de un obiect concret. O metoda nestatica se poate apela doar pe un anumit obiect.
+
+static: main, random, parseInt, abs
+
+nestatic: length, toString, getMessage, equals, readLine
+
+String s = "1345";
+int i = Integer.parseInt(s);
+
+ob1.equals(ob2)
+
+BufferedReader fisier = new ...
+fisier.readLine();         // fisierul e luat ca obiect
+
+3)
+class Persoana {
+	public void sendMsg(String dest, String msg, Object t) {
+		if (t instanceof Sms) {
+			((Sms)t).sendSms(dest, msg);
+		} else {
+			((Fax)t).sendFax(dest, msg);
+		}
+	}
+}
+
+class Sms {
+	public void sendSms(String dest, String msg) { ... }
+}
+
+
+class Fax {
+	public void sendFax(String dest, String msg) { ... }
+}
+
+class Mail {
+	public void sendMail(String dest, String msg) { ... }
+}
+
+a) Open-Closed: deschis la extensii prin adaugare de cod nou, inchis la modificari in codul deja existent. Daca am vrea sa adauga o clasa noua pentru un nou tip de mijloc de transmitere a mesajelor, ar trebui sa modficam si clasa Persoana, ceea ce nu respecta Open-Closed.
+
+b) 
+
+class Persoana {
+	public void sendMsg(String dest, String msg, MsgSender t) {
+		t.send(dest, msg);
+	}
+}
+
+abstract class MsgSender { // putea fi si interface
+	public abstract void send(String dest, String msg);
+}
+
+class Sms extends MsgSender {
+	public void send(String dest, String msg) { ... }
+}
+
+class Fax extends MsgSender {
+	public void send(String dest, String msg) { ... }
+}
+
+class Mail extends MsgSender {
+	public void send(String dest, String msg) { ... }
+}
+
+4)
+
+class A {
+	protected int aField;
+	public A() { aField = 3; }
+	public int x() { return aField; }
+}
+
+class B extends A {
+	protected int aField;
+	public int x() { 
+		// aField -> 2
+		// this.aField -> 2
+		// super.aField -> 1
+	return 2; }
+}
+
+class Main {
+	public static void main(String[] args) {
+		A a = new B();
+		System.out.println(a.x()); //UNU
+	}
+}
+
+a) gresit, sunt 2 campuri, unul in subclasa B si unul in superclasa A, cel din superclasa putand fi apelat prin super.aField
+
+b) adevarat, programul ar fi avut tendinta, din moment ce a este o variabila de tipul A, sa apeleze metoda x() din A. Insa metoda x() din B o suprascrie si atunci se apeleaza x() din B care returneaza 2
+
+c) gresit, nu vom avea erori de compilare, deoarece a este doar o referinta, nu un obiect, iar in a este pus un obiect de tip B.
+
+prezentarea 1, 2015, R1C1
+
+5) a) gresit, se va tipari A. Se va lua metoda x din A pentru nu avem suprasriere (parametri difera)
+
+b) fals, nu avem eroare pt ca obiectul e de tip B (vezi c) de mai sus)
+
+6) a) cred ca da
+
+b) o instanceof OClasa inseamna ca am facut mai inainte o = new OClasa()
+
+class M extends OClasa { ... }
+
+Fals, pt ca o instanceof OClasa va fi true si daca am facut mai inainte o = new M();
+
+2) 
+a) 56
+b) 33 (le ia pe rand pt ca e static)
+
+
+
+class A {
+	int nrAf;
+}
+
+
+A ob1, ob2, ...
+ob1.nrAf == 2
+ob2.nrAf == 3
+
+
+class A {
+	static int nrAf;
+}
+
+
+A ob1, ob2, ...
+ob1.nrAf == ob2.nrAf == 5

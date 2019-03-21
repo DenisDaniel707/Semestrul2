@@ -1,0 +1,16 @@
+R1C2 
+Exercitiul 2
+In Java transmiterea parametrilor la apelul metodelor se face NUMAI prin VALOARE. Acest lucru are ca efect faptul ca modificarile aduse parametrilor in interiorul unei functii nu se pastreaza la revenirea din functia respectiva. 
+Daca unul dintre parametrii unei functii are drept tip o clasa, aceasta inseamna ca la apel functia va primi referinta unui obiect al clasei. In cazul acesta ceea ce se transmite prin valoare este chiar referinta, NU obiectul indicat de ea.
+Aceasta inseamna ca functia NU VA PUTEA MODIFICA REFERINTA respectiva, dar VA PUTEA MODIFICA OBIECTUL indicat de ea.
+
+Exercitiul 3
+
+b)non-static variable a cannot be referenced from a static context
+
+Exercitiul 5
+a) Da , deoarece o metoda suprascrisa dintr-o subclasa, nu are voie sa arunce alte erori inafara de cele aruncate de metoda din superclasa; deci poate arunca acelasi tip de erori ca cele aruncate de metoda din superclasa, sau subtipuri de-ale acelor erori. 
+b) Gresit, o instanta a clasei Y are memorie alocata pentru toti membrii mosteniti, fie ei privati sau publici
+Exercitiul 6
+a) Corect deoarece daca avem o lista de tip B, nu avem voie teoretic sa adaugam obiecte de alt tip la acea lista, iar atribuirea a=b ne-ar permite sa facem tocmai asta, de aceea apare eroare de compilare
+b) Gresit, nu va avea nicio marime deoarece nu am alocat memorie pentru tablou.

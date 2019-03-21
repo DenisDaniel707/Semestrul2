@@ -1,0 +1,23 @@
+Ex. 1 
+ 
+ La fel ca R1C2
+
+Ex. 2
+ 
+ a) 56
+ 	deoarece din metoda apelare se seteaza la obiectul referit de e membrii pe 56 si 0
+ b) 33
+ 	deoarece t este un membru de tip static, asadar specific clasei, si daca este modificat de orice obiect, el se modifica corespunzator pt toate obiectele clasei. Deci in apelare, cand se seteaza membrii obiectului referit de f, se seteaza membrul static t cu valoarea 33.
+
+Ex. 4
+ a)
+ La linia marcata cu 1 se va tipari valoarea 1 deoarece in la apelul metodei exec se va arunca exceptia de la prima iteratie, cand i = 0, si se va intrerupe restul ciclului, ciclul inclusiv, iar a-ul nu va mai fi incrementat; in schimb a-ul va fi incrementat in portiunea finally , care se executa mereu intr-un bloc try-catch-finally, si de aceea a-ul va avea valoarea 1.
+ b) Nu,codul compileaza deoarece RuntimeException este o exceptie neverificata, adica compilatorul nu verifica cand se arunca o astfel de exceptie.
+
+ Ex. 5
+ a) Gresit, pe ecran se va tipari A deoarece este vorba de polimorfism, iar implementarea se va stabili dinamic, la rularea programului. Se va apela mereu metoda ex din clasa A.
+ b) Gresit, deoarece x nu este obiect al clasei A, ci al clasei B, x este doar referinta de tipul A, si putem avea referinte la clase abstracte.
+
+ Ex. 6
+ a) Nu stiu. Intrebati pe altcineva :) (Semnat Pepsi)
+ b) Depinde cum privesti intrebarea. Daca o refera la un obiect instanta a clasei OClasa sau la un obiect instanta al oricarei subclase a clasei OClasa, atunci expresia o instanceof OClasa va returna valoarea true. 

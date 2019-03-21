@@ -1,0 +1,36 @@
+Ex. 1
+a) Corect, nu putem accesa campul x, deoarece are ca identificator de acces default, adica nimic, asta insemnand ca x nu poate fi accesat decat din interiorul pachetului.
+b) in mod ciudat nu sesizeaza nicio eroare, desi avem o eroare de executie, deoarece nu orice referinta de tip A trebuie sa refere un obiect de tip B, si teoretic executam o metoda pe un obiect pe care nu ar trebui sa putem. 
+
+Ex. 2
+a)Mostenirea nu este buna in acest caz deoarece pe un obiect de tip RomMemory noi putem sa apelam metoda write, care scrie in memorie, desi aceasta este clar o memorie Read-only, si asadar se incalca specificitatea. 
+exemplu de cod : 
+	RomMemory mem = new RomMemory(content);
+	mem.write(addr,val);
+b) class RomMemory {
+	Memory mem;
+	public RomMemory(int[] content, Memory mem) {
+		this.mem = mem;
+		mem.writeAll(0,content);
+	}
+	public int read(int addr) {
+	 return mem.read(addr);
+		}
+	}
+Ex. 3
+a) Nu sunt sigura dar :
+	Da, in acest caz cele doua expresii sunt echivalente deoarece clasa obiectului x este aceeasi cu clasa X, iar x este o referinta la un obiect de tipul clasei X.
+b) Da, este o eroare de compilare deoarece Lista trebuie neaparat sa fie o lista cu referinte la obiecte, nu la tipuri primitive, iar cum int este un tip primitiv, va da eroare. Pentru a corecta eroarea ar fi trebuit sa o declaram astfel : List<Integer> a; 
+
+ Ex. 4
+ a)Gresit, deoarece un camp dintr-o interfata este mereu final static, si asta inseamna ca nu putem avea decat un nume pentru toate obiectele, lucru care nu e tocmai de dorit. 
+ b) Gresit, linia va da eroare de compilare deoarece aici nu exista polimorfism, ci doar o implementare de interfata. Nu va sti ce metoda getTip sa apeleze, deoarece obiectul referit de c care este de tipul Cursant,  nu e obligat sa poata(sa stie) apela o metoda getTip.
+
+ Ex. 5
+ a)1
+ 	deoarece membrul x este static (toate obiectele clasei au acelasi membru, e ca si cum ar fi o singura copie pe care o impart toate), deci se va retine mereu ultima valoare stocata; in apelul call, perechea b seteaza pe x si pe y pe 5, respectiv 6, dar apoi se creaza o noua pereche cu new Pair() care automat isi seteaza membrii x = 1 si y = 2, iar cum x e static, va ramane pe ultima valoare, adica pe 1
+ b)6
+ 	deoarece in java se lucreaza cu transmitere prin valoare, iar functia nu modifica referinta transmisa ca paramentru ci doar obiectul referit de aceasta. Deci in metoda call, pe obiectul referit de b se seteaza x = 5, y = 6, iar cand se creeaza o noua pereche, fapt care nu influenteaza obiectul referit inainte.
+Ex. 6
+a) Gresit, se va afisa valoarea 2, deoarece bucla cu iteratorul k va fi mereu intrerupta de efect(0) care arunca o exceptie si intrerupe orice e dupa ea in blocul try, se trateaza exceptia, iar apoi se incrementeaza i, si se ruleaza din nou blocul try - catch
+b) Corect deoarece RuntimeException este o exceptie neverificata, asta inseamna ca compilatorul nu tine cont de faptul ca o metoda arunca sau nu o exceptie neverificata. Daca MyExcept extindea direct Exception, ar fi dat eroare pentru ca nu este precizat in antetul metodei efect ca ar arunca vreo exceptie ( public static void efect(int x ) throws MyExcept - ar fi corect)
