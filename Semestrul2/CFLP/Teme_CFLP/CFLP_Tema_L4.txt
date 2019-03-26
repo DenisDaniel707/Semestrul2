@@ -1,0 +1,120 @@
+Ex 1:
+
+	FUNCTIA : (defun my_abs(x) (if (plusp x) x (- x)))
+
+	EXEMPLU : > (my_abs -4)
+		     4
+
+	FUNCTIA : (defun my_not(y) (if (equal y nil) t nil))
+
+	EXEMPLU : > (my_not nil)
+		     T
+		  > (my_not 5)
+		     NIL
+
+Ex 2:
+
+	FUNCTIA : (defun my_and(x y z) (cond ((equal x nil) nil) ((equal y nil) nil) ((equal z nil) nil) (t t)))
+
+	EXEMPLU : > (my_and 1 0 t)
+		     T
+		  > (my_and 1 nil t)
+		     NIL
+	
+	FUNCTIA : (defun my_or(x y z) (cond (x t) (y t) (z t) (t nil)))
+
+	EXEMPLU : > (my_or 1 nil nil)
+		     T
+		  > (my_or nil nil nil)
+		     NIL
+
+Ex 3:
+	
+	FUNCTIA : (defun mid(x y z) (cond ((< x y z) y) ((< y z x) z) ((< z x y) x) ((< x z y) z) ((< y x z) x) ((< z y x) y)))
+
+	EXEMPLU : > (mid 645 6 8217)
+		     645
+		  > (mid 12 56 99999)
+		     56
+
+Ex 4:
+
+	FUNCTIA : (defun my-third(x) (caddr x))
+
+	EXEMPLU : > (my-third '(3 5 4 6))
+		     4
+
+	FUNCTIA : (defun my-last(x) (car (reverse x)))
+
+	EXEMPLU : > (my-last '(4 5 9 7 8))
+		     8
+
+Ex 5:
+
+	FUNCTIA : (defun my-append(x y) (append x y))
+	FUNCTIA : (defun palindrom(x) (if (equal (reverse x) x) t))
+	EXEMPLU : > (palindrom (my-append '(1) '(2 1)))
+		     T
+		  > (palindrom (my-append '(2) '(2 1)))
+		     NIL
+
+Ex 6:
+
+	FUNCTIA : (defun ec(a b c) 
+		(cond 
+		     ((> (- (* b b) (* 4 a c)) 0) (list (/ (- (- b) (sqrt (- (* b b) (* 4 a c)))) (* 2 a)) (- (/ (+ (- b) (sqrt (- (* b b) (* 4 a c)))) (* 2 a)))))
+		     ((= (- (* b b) (* 4 a c)) 0) (/ (- (- b) (sqrt (- (* b b) (* 4 a c)))) (* 2 a))) 
+		     ("Solutii complexe")
+		)
+	          )
+
+	EXEMPLU : > (ec 1 3 -4)
+		    (-4 -1)
+		 > (ec 1 2 1)
+		    -1
+		 > (ec 1 2 2)
+		    "Solutii complexe"
+
+Ex 7:
+
+	FUNCTIA : (defun f(x) (cond ((<= x -2) (* x x)) ((<= x 1) (+ x 2)) ((> x 1) (sqrt (+ (* x x) 1)))))
+
+	EXEMPLU : > (f -2)
+		    4
+		 > (f 0)
+		    2
+		 > (f 2)
+		    2.236068
+
+Ex 8:
+
+	FUNCTIA : (defun at(atom lista) (cond ((member atom lista)) ((cons atom (cdr lista)))))
+
+	EXEMPLU : > (at 'c '(a b c d e f g))
+		    (C D E F G)
+		 > (at 'x '(a b c d e f g))
+		    (X B C D E F G)
+
+Ex 9: 
+
+	FUNCTIA : (defun meniu() 
+			(format t "1-ADUNARE~%2-SCADERE~%3-INMULTIRE~%4-RESTUL IMPARTIRII~%~%INTRODUCETI DOUA NUMERE SI NUMARUL OPERATIEI DORITE: ") 
+			(let ((x (read)) (y (read)) (o (read))) 
+				(cond 
+					((= o 1) (format t "~A + ~A = ~A" x y (+ x y))) 
+					((= o 2) (format t "~A - ~A = ~A" x y (- x y))) 
+					((= o 3) (format t "~A * ~A = ~A" x y (* x y))) 
+					((= o 4) (format t "~A mod ~A = ~A" x y (mod x y))) 
+					(t (format t "Invalid Option"))
+				)
+			)
+		)
+
+	EXEMPLU : > (meniu)
+		    1-ADUNARE
+		    2-SCADERE
+		    3-INMULTIRE
+		    4-RESTUL IMPARTIRII
+		    
+		    INTRODUCETI DOUA NUMERE SI NUMARUL OPERATIEI DORITE: 5 4 3
+		    5 * 4 = 20
